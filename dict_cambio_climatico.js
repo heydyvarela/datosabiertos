@@ -1,6 +1,22 @@
 /* DICCIONARIO DEL SECTOR: CAMBIO CLIMATICO */
 
 window.DICT_SECTOR = Object.assign(window.DICT_SECTOR || {}, {
+
+  /* --- Correcciones y nombres nuevos (lote 2026) --- */
+  "Elaboración propia con datos obtenidos mediante la Solicitud de Información ICF SOL-ICF-534-2026": "Own elaboration using data obtained through ICF information request SOL-ICF-534-2026",
+  "Elaboración propia con datos obtenidos del Instituto de Conservacion Forestal (ICF) mediante solicitud de información SOL-ICF-238-2023, PAG 2 y SIGMOF": "Own elaboration using data from the Forest Conservation Institute (ICF) obtained through information request SOL-ICF-238-2023, p. 2, and SIGMOF",
+  "Elaboración propia con datos obtenidos de ICF, Año 2025 Obtenido mediante solicitud de información pública No. SOL-ICF- 496 2025": "Own elaboration using ICF data; 2025 figures obtained through public information request No. SOL-ICF-496-2025",
+  "Elaboración propia con datos obtenidos mediante la solicitud de infromación ICF con apoyo de ALLAC": "Own elaboration using data obtained through an ICF information request, with support from ALLAC",
+  "Elaboración propia con datos obtenidos del ICF.  Año 2025 Obtenido mediante solicitud de información pública No. SOL-ICF- 496 2025": "Own elaboration using ICF data. 2025 figures obtained through public information request No. SOL-ICF-496-2025",
+  "Elaboración propia con datos obtenidos de Global Forest Watch": "Own elaboration using data from Global Forest Watch",
+  "Elaboración propia con datos obtenidos del Anuario Estadístico Forestal de Honduras 2022, 2023 y SIGMOF, Incendios y plataformas SIGMOF del ICF": "Own elaboration using data from the Honduras Forestry Statistical Yearbook 2022 and 2023, and from the ICF's SIGMOF and fire platforms",
+  "Elaboración propia con datos obtenidos de IQ Air": "Own elaboration using data from IQAir",
+  "Elaboración propia con datos obtenidos mediante la solicitud de información CF-UTI-072-2026 con apoyo de ALLAC": "Own elaboration using data obtained through information request CF-UTI-072-2026, with support from ALLAC",
+  "Elaboración propia con datos obtenidos mediante Solicitud de infromación SOL-ICF-534-2026  con apoyo de ALLAC": "Own elaboration using data obtained through information request SOL-ICF-534-2026, with support from ALLAC",
+  "Elaboración propia con datos obtenidos mediante Solicitud de información Ministerio Público SOL-MP-3425-2026": "Own elaboration using data obtained through Public Prosecutor's Office information request SOL-MP-3425-2026",
+  "Elaboración propia con datos obtenidos mediante solicitud de información SOL-MP-3425-2026": "Own elaboration using data obtained through information request SOL-MP-3425-2026",
+  "Elaboración propia con datos obtenidos mediante Solicitud de información SOL-MP-3425-2026": "Own elaboration using data obtained through information request SOL-MP-3425-2026",
+  "2025 nov": "Nov 2025",
   /* --- Mapas y textos adicionales --- */
   "Microcuencas declaradas por departamento": "Declared Micro-watersheds by Department",
   "Reforestación activa por departamento": "Active Reforestation by Department",

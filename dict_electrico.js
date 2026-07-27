@@ -1,6 +1,10 @@
 /* DICCIONARIO DEL SECTOR: SECTOR ELECTRICO */
 
 window.DICT_SECTOR = Object.assign(window.DICT_SECTOR || {}, {
+
+  /* --- Correcciones y nombres nuevos (lote 2026) --- */
+  "Frecuencia media de interrupción por usuario (SAIFI)": "Average Interruption Frequency per User (SAIFI)",
+  "Tiempo Promedio de Interrupciones en el Servicio de Energía Eléctrica (SAIDI)": "Average Duration of Electricity Service Interruptions (SAIDI)",
   /* --- Mapas y textos adicionales --- */
   "Año:": "Year:",
   "Pasá el mouse sobre el mapa para ver los datos de cada departamento.": "Hover over the map to see the data for each department.",

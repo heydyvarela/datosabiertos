@@ -1,6 +1,18 @@
 /* DICCIONARIO DEL SECTOR: SEGURIDAD Y JUSTICIA */
 
 window.DICT_SECTOR = Object.assign(window.DICT_SECTOR || {}, {
+
+  /* --- Correcciones y nombres nuevos (lote 2026) --- */
+  "Elaboración Propia con datos del Observatorio Nacional de la Violencia, IUDPAS-UNAH datos del (2019-2024) y (2025) en base al informe Estrategias para mejorar la seguridad ciudadana en Honduras 2026-2030 de la Secretaria en el Despacho de Seguridad, Policia Nacional de Honduras . La tasa de femicidios del 2025 es un dato preliminar calculada de la siguiente manera: Cantidad de femicidios/ Cantidad del población femenina del 2025 por 100 mill. (167/5,157,696.00)100 mil": "Own elaboration using data from the National Violence Observatory, IUDPAS-UNAH, for 2019–2024, and for 2025 based on the report Strategies to Improve Citizen Security in Honduras 2026–2030 by the Ministry of Security, National Police of Honduras. The 2025 femicide rate is preliminary and was calculated as follows: number of femicides / female population in 2025, per 100,000: (167 / 5,157,696) × 100,000.",
+  "Elaboración propia con datos obtenidos en las Estrategias para mejorar la seguridad cuidadana en Honduras 2026-2030": "Own elaboration using data from Strategies to Improve Citizen Security in Honduras 2026–2030",
+  "Elaboración propia con Información obtenida mediante SOL-MP-3023-2025, SOL-MP-2384-2025": "Own elaboration using information obtained through SOL-MP-3023-2025 and SOL-MP-2384-2025",
+  "Elaboración propia con datos obtenidos del World Justice Project (2025)": "Own elaboration using data from the World Justice Project (2025)",
+  "Elaboración propia con datos del Global Peace Index y Institute for Economics & Peace para 2025.": "Own elaboration using data from the Global Peace Index and the Institute for Economics & Peace for 2025.",
+  "Cantidad de policías por año": "Number of Police Officers by Year",
+  "Elaboración propia con datos obtenidos en la Secretaría de Seguridad mediante solicitud de información SSSS-1672-2023, oficio DGPN N.º 0996-2024 y Portal IAIP-Sec. Seguridad, Planilla diciembre 2024, personal policial.": "Own elaboration using data from the Ministry of Security obtained through information request SSSS-1672-2023, official letter DGPN No. 0996-2024, and the IAIP portal – Ministry of Security, December 2024 payroll, police personnel.",
+  "Elaboración propia con datos obtenidos del Balance de InSight Crime de los homicidios (2016-2025). Los datos del promedio de América Latina fueron calculados por el equipo a partir de datos por país de InSight Crime Homicide Round-Up.": "Own elaboration using data from the InSight Crime Homicide Round-Up (2016–2025). The Latin American average was calculated by the team from InSight Crime country-level data.",
+  "Comparación de la tasa de homicidios de Honduras con otros países de la región centroamericana y el promedio de América Latina y el Caribe.": "Comparison of the homicide rate in Honduras with other Central American countries and the Latin America and Caribbean average.",
+  "Nicaragua": "Nicaragua",
   /* --- Mapas y textos adicionales --- */
   "Tasa de Homicidios por Departamento": "Homicide Rate by Department",
   "Denuncias por Extorsión por Departamento": "Extortion Reports by Department",

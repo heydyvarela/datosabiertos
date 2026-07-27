@@ -318,7 +318,7 @@ function draw(){const ind=INDS[aid];document.getElementById('bc').textContent=t(
 function cmpLabel(id){return INDS[id]?INDS[id].n:String(id);}
 function dlData(){const ind=INDS[aid];const wb=XLSX.utils.book_new();const ks=ind.multi?ind.keys:cids.map(String);const ss=(ind.multi?ind.series:cids.map(i=>INDS[i].n)).map(t);ks.forEach((k,i)=>{const rows=[[t('Año'),t('Valor'),t(ind.den),t('Fuente')]];(DATA[k]||[]).forEach(r=>rows.push([t(r.a),r.v,t(ind.den),t(ind.src)]));const ws=XLSX.utils.aoa_to_sheet(rows);ws['!cols']=[{wch:12},{wch:14},{wch:28},{wch:50}];XLSX.utils.book_append_sheet(wb,ws,ss[i].substring(0,28).replace(/[\/\\:?*[\]]/g,''));});XLSX.writeFile(wb,'Salud_'+INDS[aid].n.replace(/[^\w\s]/g,'').trim().replace(/\s+/g,'_').substring(0,30)+'.xlsx');}
 (function(){var p=new URLSearchParams(window.location.search),ind=p.get('ind');if(ind&&INDS[ind]){setTimeout(function(){sel(ind);},100);}})();
-buildList();sel('1');applyStaticI18n();
+buildList();sel('1');if(typeof LANG!=='undefined'&&LANG==='en'){setLang('en');}else{applyStaticI18n();}
 (function(){var p=new URLSearchParams(window.location.search),ind=p.get("ind");if(ind){if(INDS[ind]){setTimeout(function(){sel(ind);},120);}else{var n=parseInt(ind);if(INDS[n]){setTimeout(function(){sel(n);},120);}}}})();
 // ── CHART TYPE TOGGLE (bar/line) ──
 function toggleChartTypeMenu(){
