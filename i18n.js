@@ -10,7 +10,17 @@
    ============================================================ */
 
 var LANG = (function () {
-  try { return localStorage.getItem('ij_lang') || 'es'; } catch (e) { return 'es'; }
+  /* El explorador SIEMPRE arranca en espanol para quien llega desde fuera
+     (nueva pestana, enlace directo, recarga completa). Solo respeta la
+     eleccion previa cuando el visitante navega entre paginas del propio
+     sitio dentro de la misma visita (p. ej. de un dashboard a otro). */
+  try {
+    var vieneDelSitio = document.referrer && document.referrer.indexOf(location.host) !== -1;
+    if (vieneDelSitio) {
+      return sessionStorage.getItem('ij_lang') || 'es';
+    }
+    return 'es';
+  } catch (e) { return 'es'; }
 })();
 
 /* Términos comunes a TODOS los dashboards.
@@ -169,7 +179,7 @@ function applyStaticI18n() {
 
 function setLang(l) {
   LANG = l;
-  try { localStorage.setItem('ij_lang', l); } catch (e) {}
+  try { sessionStorage.setItem('ij_lang', l); } catch (e) {}
   applyStaticI18n();
 
   if (typeof buildList === 'function') {
