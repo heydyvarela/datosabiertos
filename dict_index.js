@@ -5,6 +5,7 @@
 window.DICT_INDEX = Object.assign(window.DICT_INDEX || {}, {
   /* --- Mapas y textos adicionales --- */
   "Descargar gráfica": "Download chart",
+  "No se encontraron resultados": "No results found",
 
   /* --- Cabecera y hero --- */
   "Instituto de la Justicia – ASJ Honduras": "Institute for Justice \u2013 ASJ Honduras",

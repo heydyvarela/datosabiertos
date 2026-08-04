@@ -255,22 +255,96 @@ function renderHybridMap(containerId, imgB64, dataDict, label){
 function norm(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
 function fv(v){if(v===null||v===undefined||!isFinite(Number(v)))return'';v=Number(v);if(v>=1e6)return(v/1e6).toFixed(1)+'M';if(v>=1e3&&v%1===0)return v.toLocaleString();if(v>=100)return Math.round(v).toLocaleString();if(v%1===0)return v.toString();return parseFloat(v.toFixed(2)).toString();}
 
+// Distancia de Levenshtein (para tolerar errores tipográficos)
+function lev(a,b){
+  if(a===b)return 0;
+  var m=a.length,n=b.length;
+  if(!m)return n; if(!n)return m;
+  var prev=[],cur=[],i,j;
+  for(j=0;j<=n;j++)prev[j]=j;
+  for(i=1;i<=m;i++){
+    cur[0]=i;
+    for(j=1;j<=n;j++){
+      var cost=a.charCodeAt(i-1)===b.charCodeAt(j-1)?0:1;
+      cur[j]=Math.min(cur[j-1]+1,prev[j]+1,prev[j-1]+cost);
+    }
+    prev=cur.slice();
+  }
+  return prev[n];
+}
+// ¿un término coincide de forma aproximada con alguna palabra del campo?
+function fuzzyWord(term,words){
+  for(var i=0;i<words.length;i++){
+    var w=words[i];
+    if(w.indexOf(term)>=0)return true;
+    if(term.length>=4){
+      var tol=term.length>=7?2:1;
+      if(lev(term,w)<=tol)return true;
+      if(w.length>=term.length&&lev(term,w.slice(0,term.length))<=tol)return true;
+    }
+  }
+  return false;
+}
+// Resalta coincidencias ignorando mayúsculas y acentos
+function highlightAI(text,term,color){
+  var nt=norm(text),nterm=norm(term);
+  if(!nterm)return text;
+  var out='',i=0;
+  while(i<text.length){
+    if(nt.substr(i,nterm.length)===nterm){
+      out+='<strong style="color:'+color+'">'+text.substr(i,nterm.length)+'</strong>';
+      i+=nterm.length;
+    }else{out+=text[i];i++;}
+  }
+  return out;
+}
 function onS(q){
   var dd=document.getElementById('sd');
   q=q.trim();
   if(q.length<2){dd.classList.remove('show');return;}
-  var terms=norm(q).split(' ').filter(function(t){return t.length>0;});
-  var matches=INDS.filter(function(ind){
-    var n=norm(ind.name)+' '+norm(t(ind.name)),sh=norm(ind.short||'')+' '+norm(t(ind.short||'')),s=norm(ind.sector)+' '+norm(t(ind.sector));
-    return terms.every(function(t){return n.indexOf(t)>=0||sh.indexOf(t)>=0||s.indexOf(t)>=0;});
-  }).slice(0,10);
-  if(!matches.length){dd.classList.remove('show');return;}
+  var terms=norm(q).split(/\s+/).filter(function(x){return x.length>0;});
+
+  function score(ind){
+    var full=norm(ind.name)+' '+norm(t(ind.name))+' '+
+             norm(ind.short||'')+' '+norm(t(ind.short||''))+' '+
+             norm(ind.sector)+' '+norm(t(ind.sector));
+    var words=full.split(/\s+/).filter(Boolean);
+    var sc=0,matched=0;
+    terms.forEach(function(term){
+      var best=0;
+      if(full.indexOf(term)>=0)best=10;
+      words.forEach(function(w){
+        if(w===term)best=Math.max(best,12);
+        else if(w.indexOf(term)===0)best=Math.max(best,9);
+      });
+      if(best===0&&fuzzyWord(term,words))best=4;
+      if(best>0){sc+=best;matched++;}
+    });
+    if(matched===0)return -1;
+    if(matched===terms.length)sc+=5;
+    sc+=matched;
+    return sc;
+  }
+
+  var scored=[];
+  INDS.forEach(function(ind){
+    var sc=score(ind);
+    if(sc>=0)scored.push({ind:ind,sc:sc});
+  });
+  scored.sort(function(a,b){return b.sc-a.sc;});
+  var matches=scored.slice(0,10).map(function(x){return x.ind;});
+
+  if(!matches.length){
+    dd.innerHTML='<div class="si" style="cursor:default;color:#94a3b8;justify-content:center">'+
+      t('No se encontraron resultados')+'</div>';
+    dd.classList.add('show');
+    return;
+  }
   var html='';
   matches.forEach(function(ind){
     var color=SCOL[ind.sector]||'#334155';
-    var displayName=t(ind.short||ind.name);
-    var re=new RegExp('('+q.replace(/[-\/\\^$*+?.()|\[\]{}]/g,'\\$&')+')','gi');
-    var hi=displayName.replace(re,'<strong style="color:'+color+'">$1</strong>');
+    var hi=t(ind.short||ind.name);
+    terms.forEach(function(term){hi=highlightAI(hi,term,color);});
     html+='<div class="si" onclick="showIndicator(\''+ind.id+'\')">'+
       '<span class="si-badge" style="background:'+color+'">'+t(ind.sector)+'</span>'+
       '<span class="si-name">'+hi+'</span></div>';
