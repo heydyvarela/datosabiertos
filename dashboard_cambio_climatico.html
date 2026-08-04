@@ -218,7 +218,8 @@ function renderHybridMap(containerId, imgB64, dataDict, label){
   var mx = present.length ? Math.max.apply(null,present) : 0;
 
   var RAMP = ['#EAF1F6','#B7D0E1','#7FA9C6','#4E7FA6','#2B577C','#173952'];
-  var NODATA = '#E4E4E0';
+  var NODATA = '#F4F5F7';
+  var NODATA_STROKE = '#C4CBD4';
   function colorFor(v){
     if(v==null) return NODATA;
     if(mx===mn) return RAMP[RAMP.length-1];
@@ -230,29 +231,45 @@ function renderHybridMap(containerId, imgB64, dataDict, label){
   var paths='';
   names.forEach(function(n,i){
     var v=vals[i];
+    var stroke = (v==null) ? NODATA_STROKE : '#B9C6D3';
     paths += '<path class="hn-hover" data-dept="'+n+'" data-val="'+(v==null?'':v)+'" d="'+HN_GEO_PATHS[n]+'" '
-          +  'fill="'+colorFor(v)+'" stroke="#ffffff" stroke-width="1" stroke-linejoin="round" '
-          +  'style="cursor:pointer;transition:fill .15s"/>';
+          +  'fill="'+colorFor(v)+'" stroke="'+stroke+'" stroke-width="1" stroke-linejoin="round" '
+          +  'data-basestroke="'+stroke+'" style="cursor:pointer;transition:fill .15s"/>';
   });
 
-  // Leyenda de tramos
+  // Leyenda: barra de gradiente continua con marcas numéricas
   var legend='';
   if(mx>mn){
-    var step=(mx-mn)/RAMP.length;
-    for(var j=0;j<RAMP.length;j++){
-      var a=mn+step*j, b=mn+step*(j+1);
-      legend += '<div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#556">'
-             +  '<span style="width:14px;height:14px;border-radius:3px;background:'+RAMP[j]+';border:1px solid #d5dde5"></span>'
-             +  '<span>'+fv(Math.round(a))+(j===RAMP.length-1?'+':' – '+fv(Math.round(b)))+'</span></div>';
+    var grad = 'linear-gradient(to right,'+RAMP.join(',')+')';
+    // 5 marcas equiespaciadas entre mn y mx
+    var ticks='';
+    var N=4;
+    for(var t=0;t<=N;t++){
+      var val = mn + (mx-mn)*t/N;
+      var pctPos = (t/N)*100;
+      var align = t===0 ? 'left:0;transform:none;text-align:left'
+                : (t===N ? 'right:0;left:auto;transform:none;text-align:right'
+                         : 'left:'+pctPos+'%;transform:translateX(-50%);text-align:center');
+      ticks += '<span style="position:absolute;'+align+';top:0;font-size:10px;color:#556;white-space:nowrap">'+fv(Math.round(val))+'</span>';
     }
-    legend += '<div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#556">'
-           +  '<span style="width:14px;height:14px;border-radius:3px;background:'+NODATA+';border:1px solid #d5dde5"></span>'
-           +  '<span>Sin dato</span></div>';
+    legend = '<div style="width:100%;max-width:520px">'
+      + '<div style="display:flex;align-items:center;gap:10px">'
+      +   '<div style="flex:1">'
+      +     '<div style="height:12px;border-radius:6px;background:'+grad+';border:1px solid #e2e8ef"></div>'
+      +     '<div style="position:relative;height:14px;margin-top:4px">'+ticks+'</div>'
+      +   '</div>'
+      +   '<div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#556;white-space:nowrap;padding-left:6px">'
+      +     '<span style="width:14px;height:14px;border-radius:3px;background:'+NODATA+';border:1px solid '+NODATA_STROKE+'"></span>'
+      +     '<span>Sin dato</span>'
+      +   '</div>'
+      + '</div>'
+      + '<div style="font-size:11px;color:#3a5168;font-weight:600;margin-top:8px">'+label+'</div>'
+      + '</div>';
   }
 
   var html = '<div style="width:100%">'
     + '<svg viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet" '
-    +   'style="width:100%;height:auto;display:block;background:#f4f7f9;border-radius:10px">'
+    +   'style="width:100%;height:auto;display:block;background:#ffffff;border-radius:10px">'
     + paths
     + '</svg>'
     + '<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;padding:0 4px">'+legend+'</div>'
@@ -292,7 +309,7 @@ function renderHybridMap(containerId, imgB64, dataDict, label){
   });
   svgEl.addEventListener('mouseout',function(e){
     if(e.target && e.target.classList && e.target.classList.contains('hn-hover')){
-      e.target.setAttribute('stroke-width','1'); e.target.setAttribute('stroke','#ffffff');
+      e.target.setAttribute('stroke-width','1'); e.target.setAttribute('stroke', e.target.getAttribute('data-basestroke')||'#B9C6D3');
     }
   });
   svgEl.addEventListener('mouseleave',function(){ tooltip.style.display='none'; });
@@ -663,49 +680,116 @@ function toggleFmtMenuG(){
 }
 var TOP3_DATA={"1":[{"rank":"#1","name":"El Paraíso","detail":"113.0 Microcuencas"},{"rank":"#2","name":"Copán","detail":"73.0 Microcuencas"},{"rank":"#3","name":"Yoro","detail":"71.0 Microcuencas"}],"6":[{"rank":"#1","name":"Olancho","detail":"8k Hectáreas (ha)"},{"rank":"#2","name":"El Paraíso","detail":"3k Hectáreas (ha)"},{"rank":"#3","name":"Yoro","detail":"2k Hectáreas (ha)"}],"9":[{"rank":"#1","name":"Francisco Morazán","detail":"620.0 Número de incendios"},{"rank":"#2","name":"Olancho","detail":"580.0 Número de incendios"},{"rank":"#3","name":"Yoro","detail":"440.0 Número de incendios"}],"12":[{"rank":"#1","name":"El Paraíso","detail":"924k Hectáreas afectadas (ha)"},{"rank":"#2","name":"Olancho","detail":"544k Hectáreas afectadas (ha)"},{"rank":"#3","name":"Francisco Morazán","detail":"304k Hectáreas afectadas (ha)"}]};
 function dlMap(cid){
-  var imgB64=CC_IMGS[cid];
-  if(!imgB64){showToastG('No hay mapa disponible','error');return;}
+  var container=document.getElementById('mapHybrid'+cid);
+  var svg=container?container.querySelector('svg'):null;
+  if(!svg){showToastG('No hay mapa disponible','error');return;}
   var titleEl=document.querySelector('#mapCard'+cid+' > div:first-child > div:first-child');
   var title=titleEl?titleEl.textContent:'Mapa departamental';
   var top3=TOP3_DATA[cid]||[];
+
+  // Serializar el SVG del mapa. Fijamos tamaño de export desde el viewBox (960x540).
+  var vb=(svg.getAttribute('viewBox')||'0 0 960 540').split(/\s+/).map(Number);
+  var vbW=vb[2]||960, vbH=vb[3]||540;
+  var SCALE=2;                 // resolución de export
+  var mapW=vbW*SCALE, mapH=vbH*SCALE;
+
+  var clone=svg.cloneNode(true);
+  clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+  clone.setAttribute('width', mapW);
+  clone.setAttribute('height', mapH);
+  // Fondo blanco explícito dentro del SVG (por si el visor no lo asume)
+  var bg=document.createElementNS('http://www.w3.org/2000/svg','rect');
+  bg.setAttribute('x','0');bg.setAttribute('y','0');
+  bg.setAttribute('width',vbW);bg.setAttribute('height',vbH);
+  bg.setAttribute('fill','#ffffff');
+  clone.insertBefore(bg, clone.firstChild);
+
+  var svgStr=new XMLSerializer().serializeToString(clone);
+  var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svgStr);
+
+  // Datos de la leyenda (barra de gradiente) para redibujarla en el canvas
+  var RAMP=['#EAF1F6','#B7D0E1','#7FA9C6','#4E7FA6','#2B577C','#173952'];
+  var NODATA='#F4F5F7', NODATA_STROKE='#C4CBD4';
+  var normData={};
+  var dd=CC_MAP_DATA[cid]||{};
+  function norm(t){return t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s/g,'').toUpperCase();}
+  Object.keys(dd).forEach(function(k){normData[norm(k)]=Number(dd[k]);});
+  var present=Object.keys(normData).map(function(k){return normData[k];}).filter(function(v){return v!=null&&!isNaN(v);});
+  var mn=present.length?Math.min.apply(null,present):0;
+  var mx=present.length?Math.max.apply(null,present):0;
+  var label=CC_MAP_LABELS[cid]||'';
+  function fv(v){v=Number(v);if(v>=1e6)return (v/1e6).toFixed(1)+'M';if(v>=1000)return Math.round(v/1000)+'k';return (v%1===0)?v.toString():v.toFixed(1);}
+
   var img=new Image();
   img.onload=function(){
-    var padTop=54, sidebarW=top3.length?280:0;
+    var padTop=54, sidebarW=top3.length?280:0, legendH=70;
     var canvas=document.createElement('canvas');
-    canvas.width=img.width+sidebarW;
-    canvas.height=Math.max(img.height+padTop,420);
+    canvas.width=mapW+sidebarW*SCALE;
+    canvas.height=mapH+padTop*SCALE+legendH*SCALE;
     var ctx=canvas.getContext('2d');
-    ctx.fillStyle='#ffffff';
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.scale(SCALE,SCALE);
+
+    // Título
     ctx.fillStyle='#0d2a4e';
     ctx.font='bold 18px "Times New Roman",Times,serif';
     ctx.textAlign='left';ctx.textBaseline='middle';
     ctx.fillText(title,16,padTop/2+4);
-    ctx.drawImage(img,0,padTop);
+
+    // Mapa
+    ctx.drawImage(img,0,padTop,vbW,vbH);
+
+    // Leyenda de gradiente
+    var ly=padTop+vbH+18, lx=16, lw=Math.min(420,vbW-140);
+    if(mx>mn){
+      var grad=ctx.createLinearGradient(lx,0,lx+lw,0);
+      for(var g=0;g<RAMP.length;g++){grad.addColorStop(g/(RAMP.length-1),RAMP[g]);}
+      ctx.fillStyle=grad;
+      if(ctx.roundRect){ctx.beginPath();ctx.roundRect(lx,ly,lw,12,6);ctx.fill();}
+      else{ctx.fillRect(lx,ly,lw,12);}
+      ctx.strokeStyle='#e2e8ef';ctx.lineWidth=1;ctx.strokeRect(lx,ly,lw,12);
+      // marcas
+      ctx.fillStyle='#556';ctx.font='11px "Times New Roman",Times,serif';ctx.textBaseline='top';
+      var N=4;
+      for(var t=0;t<=N;t++){
+        var val=mn+(mx-mn)*t/N, px=lx+lw*t/N;
+        ctx.textAlign=t===0?'left':(t===N?'right':'center');
+        ctx.fillText(fv(Math.round(val)),px,ly+18);
+      }
+      // Sin dato
+      var sdx=lx+lw+24;
+      ctx.fillStyle=NODATA;
+      ctx.fillRect(sdx,ly,14,14);
+      ctx.strokeStyle=NODATA_STROKE;ctx.strokeRect(sdx,ly,14,14);
+      ctx.fillStyle='#556';ctx.textAlign='left';ctx.textBaseline='middle';
+      ctx.font='11px "Times New Roman",Times,serif';
+      ctx.fillText('Sin dato',sdx+20,ly+7);
+      // etiqueta del indicador
+      ctx.fillStyle='#3a5168';ctx.font='bold 12px "Times New Roman",Times,serif';
+      ctx.textBaseline='top';ctx.fillText(label,lx,ly+36);
+    }
+
+    // Panel Top 3
     if(top3.length){
-      var sx=img.width+20;
-      var sy=padTop+16;
-      ctx.fillStyle='#4a6a84';
-      ctx.font='bold 12px "Times New Roman",Times,serif';
-      ctx.fillText('TOP 3 DEPARTAMENTOS',sx,sy);
-      sy+=30;
+      var sx=vbW+20, sy=padTop+16;
+      ctx.fillStyle='#4a6a84';ctx.font='bold 12px "Times New Roman",Times,serif';
+      ctx.textAlign='left';ctx.textBaseline='alphabetic';
+      ctx.fillText('TOP 3 DEPARTAMENTOS',sx,sy);sy+=30;
       top3.forEach(function(t){
-        ctx.fillStyle='#7b1521';
-        ctx.font='bold 14px "Times New Roman",Times,serif';
-        ctx.fillText(t.rank+'  '+t.name,sx,sy);
-        sy+=20;
-        ctx.fillStyle='#555';
-        ctx.font='12px "Times New Roman",Times,serif';
-        ctx.fillText(t.detail,sx,sy);
-        sy+=30;
+        ctx.fillStyle='#7b1521';ctx.font='bold 14px "Times New Roman",Times,serif';
+        ctx.fillText(t.rank+'  '+t.name,sx,sy);sy+=20;
+        ctx.fillStyle='#555';ctx.font='12px "Times New Roman",Times,serif';
+        ctx.fillText(t.detail,sx,sy);sy+=30;
       });
     }
+
     var a=document.createElement('a');
     a.href=canvas.toDataURL('image/png');
     a.download='Mapa_'+cid+'.png';
     document.body.appendChild(a);a.click();document.body.removeChild(a);
   };
-  img.src='data:image/png;base64,'+imgB64;
+  img.onerror=function(){showToastG('No se pudo generar el mapa','error');};
+  img.src=svgUrl;
 }
 var _dtI=0;
 var _dtS=[
