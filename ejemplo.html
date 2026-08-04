@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejemplo — mapa coropleta por departamento</title>
+<link rel="stylesheet" href="hn-choropleth.css">
+<style>
+  body { max-width: 820px; margin: 2rem auto; padding: 0 1rem;
+         font-family: system-ui, sans-serif; color: #2b3a42; }
+  #salida { margin-top: 1rem; padding: .7rem .9rem; background: #eef3f5;
+            border-radius: 8px; font-size: 14px; min-height: 1.2rem; }
+</style>
+</head>
+<body>
+  <h1>Microcuencas por departamento</h1>
+
+  <div id="mapa-microcuencas"></div>
+  <div id="salida">Haga clic en un departamento…</div>
+
+  <!-- 1) geometría  2) componente -->
+  <script src="hn-geo.js"></script>
+  <script src="hn-choropleth.js"></script>
+  <script>
+    // Datos del indicador: clave = nombre del departamento (con o sin tilde).
+    var DATOS_MICROCUENCAS = {
+      'Atlántida': 45,  'Colón': 62,      'Comayagua': 78,
+      'Copán': 30,      'Cortés': 55,     'Choluteca': 40,
+      'El Paraíso': 88, 'Francisco Morazán': 120, 'Gracias a Dios': 25,
+      'Intibucá': 66,   'Islas de la Bahía': 8,   'La Paz': 52,
+      'Lempira': 70,    'Ocotepeque': 34, 'Olancho': 140,
+      'Santa Bárbara': 60, 'Valle': 28,   'Yoro': 95
+    };
+
+    var info = renderChoropleth('#mapa-microcuencas', {
+      data: DATOS_MICROCUENCAS,
+      title: 'Microcuencas por departamento',
+      unit: 'microcuencas',
+      onClick: function (dep) {
+        document.getElementById('salida').innerHTML =
+          '<b>' + dep.name + '</b> (código ' + dep.code + '): ' +
+          (dep.value == null ? 'sin dato' : dep.value + ' microcuencas');
+      }
+    });
+
+    console.log('Departamentos emparejados:', info.matched + '/' + info.total);
+  </script>
+</body>
+</html>
