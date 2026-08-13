@@ -102,7 +102,7 @@ body,input,button,select,textarea{font-family:"Times New Roman",Times,serif !imp
 <div class="layout">
   <div class="sidebar">
     
-    <div style="display:flex;align-items:center;gap:8px;padding:16px 16px 11px;border-top:1px solid rgba(255,255,255,.08);margin-top:2px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span style="font-size:14px;font-weight:800;letter-spacing:0.6px;color:#fff" data-i18n="Indicadores">Indicadores</span><button onclick="openMethodology()" data-i18n-title="Metodología" style="margin-left:auto;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#90caf9;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:5px 10px;border-radius:6px;cursor:pointer;font-family:inherit" onmouseover="this.style.background='rgba(255,255,255,.16)'" onmouseout="this.style.background='rgba(255,255,255,.08)'" data-i18n="Metodología">Metodología</button></div><div style="padding:0 12px 10px"><input type="text" id="indSearch" oninput="filterInds(this.value)" placeholder="Buscar indicador..." data-i18n-placeholder="Buscar indicador..." style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;font-size:12px;padding:8px 12px;border-radius:7px;outline:none;font-family:inherit" onfocus="this.style.borderColor='#64b5f6'" onblur="this.style.borderColor='rgba(255,255,255,.16)'"></div><div class="ind-scroll" id="indList"></div><div id="indNoResults" style="display:none;padding:14px 16px;font-size:11.5px;color:#8fa8c0;font-style:italic" data-i18n="Sin resultados">Sin resultados</div><div style="padding:12px 12px 16px;border-top:1px solid rgba(255,255,255,.08);margin-top:4px"><button onclick="downloadAllXLSX()" data-i18n-title="Descargar todos" style="width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#cfe6fb;font-size:12px;font-weight:700;letter-spacing:.4px;padding:10px 12px;border-radius:8px;cursor:pointer;font-family:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.16)'" onmouseout="this.style.background='rgba(255,255,255,.08)'"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg><span data-i18n="Descargar todos">Descargar todos</span></button></div>
+    <div style="display:flex;align-items:center;gap:8px;padding:16px 16px 11px;border-top:1px solid rgba(255,255,255,.08);margin-top:2px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span style="font-size:14px;font-weight:800;letter-spacing:0.6px;color:#fff" data-i18n="Indicadores">Indicadores</span><button onclick="openMethodology()" data-i18n-title="Metodología" style="margin-left:auto;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#90caf9;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:5px 10px;border-radius:6px;cursor:pointer;font-family:inherit" onmouseover="this.style.background='rgba(255,255,255,.16)'" onmouseout="this.style.background='rgba(255,255,255,.08)'" data-i18n="Metodología">Metodología</button></div><div style="padding:0 12px 10px"><input type="text" id="indSearch" oninput="filterInds(this.value)" placeholder="Buscar indicador..." data-i18n-placeholder="Buscar indicador..." style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;font-size:12px;padding:8px 12px;border-radius:7px;outline:none;font-family:inherit" onfocus="this.style.borderColor='#64b5f6'" onblur="this.style.borderColor='rgba(255,255,255,.16)'"></div><div class="ind-scroll" id="indList"></div><div id="indNoResults" style="display:none;padding:14px 16px;font-size:11.5px;color:#8fa8c0;font-style:italic" data-i18n="Sin resultados">Sin resultados</div><div style="padding:12px 12px 16px;border-top:1px solid rgba(255,255,255,.08);margin-top:4px"><button onclick="openResumen()" data-i18n-title="Generar resumen" style="width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;background:#2e7d32;border:1px solid #2e7d32;color:#fff;font-size:12px;font-weight:700;letter-spacing:.4px;padding:10px 12px;border-radius:8px;cursor:pointer;font-family:inherit;margin-bottom:8px;transition:filter .15s" onmouseover="this.style.filter='brightness(1.12)'" onmouseout="this.style.filter='none'"><span data-i18n="Generar resumen">Generar resumen</span></button><button onclick="downloadAllXLSX()" data-i18n-title="Descargar todos" style="width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#cfe6fb;font-size:12px;font-weight:700;letter-spacing:.4px;padding:10px 12px;border-radius:8px;cursor:pointer;font-family:inherit;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.16)'" onmouseout="this.style.background='rgba(255,255,255,.08)'"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64b5f6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16"/></svg><span data-i18n="Descargar todos">Descargar todos</span></button></div>
   </div>
   <div class="main">
     <div class="chart-header">
@@ -168,6 +168,8 @@ const INDS={
   15:{n:"Muerte de defensores ambientales",desc:"Cantidad de defensores ambientales asesinados en el país.",sec:"JUSTICIA AMBIENTAL",den:"Número de casos",src:"Elaboración propia con datos obtenidos mediante Solicitud de información SOL-MP-3425-2026",grp:"defensores",sheet:"Muerte de defensores"}
 };
 
+
+/*SENTIDO_INJECT*/(function(){var S={"1":{"s":"mayor_mejor"},"2":{"s":"mayor_mejor"},"3":{"s":"mayor_mejor"},"4":{"s":"mayor_mejor"},"5":{"s":"mayor_mejor"},"6":{"s":"mayor_mejor"},"7":{"s":"menor_mejor"},"8":{"s":"menor_mejor"},"9":{"s":"menor_mejor"},"10":{"s":"menor_mejor"},"11":{"s":"mayor_mejor"},"12":{"s":"menor_mejor"},"13":{"s":"menor_mejor"},"14":{"s":"mayor_mejor"},"15":{"s":"menor_mejor"}};for(var k in S){if(INDS[k]){INDS[k].sentido=S[k].s;if(S[k].p)INDS[k].parcial=S[k].p;}}})();
 const DATA={"1":[{"a":2015,"v":30.0},{"a":2016,"v":56.0},{"a":2017,"v":44.0},{"a":2018,"v":32.0},{"a":2019,"v":41.0},{"a":2020,"v":37.0},{"a":2021,"v":33.0},{"a":2022,"v":45.0},{"a":2023,"v":68.0},{"a":2024,"v":340.0},{"a":2025,"v":492.0}],"2":[{"a":2017,"v":38056.7},{"a":2018,"v":59826.8},{"a":2019,"v":61325.8},{"a":2020,"v":62008.8},{"a":2021,"v":65071.1},{"a":2022,"v":74486.1},{"a":2023,"v":72891.9},{"a":2024,"v":100644.4}],"3a":[{"a":"2013","v":41.0},{"a":"2014","v":41.0},{"a":"2015","v":44.0},{"a":"2016","v":50.0},{"a":"2017","v":58.0},{"a":"2018","v":66.0},{"a":"2019","v":55.0},{"a":"2020","v":57.0},{"a":"2021","v":66.0},{"a":"2022","v":63.0},{"a":"2023","v":55.0},{"a":"2024","v":55.0},{"a":"2025 nov","v":61.0}],"3b":[{"a":"2013","v":58.8},{"a":"2014","v":59.4},{"a":"2015","v":55.7},{"a":"2016","v":49.7},{"a":"2017","v":41.9},{"a":"2018","v":34.1},{"a":"2019","v":45.0},{"a":"2020","v":42.8},{"a":"2021","v":34.4},{"a":"2022","v":37.0},{"a":"2023","v":45.0},{"a":"2024","v":45.0},{"a":"2025 nov","v":39.0}],"4":[{"a":2013,"v":58.89},{"a":2014,"v":58.74},{"a":2015,"v":57.99},{"a":2016,"v":57.57},{"a":2017,"v":57.05},{"a":2018,"v":56.73},{"a":2019,"v":56.09},{"a":2020,"v":55.59},{"a":2021,"v":55.23},{"a":2022,"v":56.06},{"a":2024,"v":51.59}],"5":[{"a":2020,"v":28140.3},{"a":2021,"v":36508.5},{"a":2022,"v":47015.5},{"a":2023,"v":65241.7},{"a":2024,"v":69991.0},{"a":2025,"v":20379.0}],"6a":[{"a":2020,"v":1643.9},{"a":2021,"v":2614.6},{"a":2022,"v":7822.6},{"a":2023,"v":6800.7},{"a":2024,"v":9215.6},{"a":2025,"v":8217.3}],"6b":[{"a":2020,"v":26496.4},{"a":2021,"v":33893.9},{"a":2022,"v":49773.7},{"a":2023,"v":58440.9},{"a":2024,"v":30446.3},{"a":2025,"v":52418.4}],"7":[{"a":2015,"v":55893},{"a":2016,"v":106377},{"a":2017,"v":76928},{"a":2018,"v":76928},{"a":2019,"v":61903},{"a":2020,"v":87145},{"a":2021,"v":67312},{"a":2022,"v":77529},{"a":2023,"v":55893},{"a":2024,"v":48080},{"a":2025,"v":8454}],"8":[{"a":2001,"v":4747.5},{"a":2002,"v":7343.6},{"a":2003,"v":8855.6},{"a":2004,"v":7114.6},{"a":2005,"v":14157.5},{"a":2006,"v":14165.5},{"a":2007,"v":12660.1},{"a":2008,"v":14679.9},{"a":2009,"v":22179.6},{"a":2010,"v":21407.3},{"a":2011,"v":20322.9},{"a":2012,"v":10008.2},{"a":2013,"v":16969.7},{"a":2014,"v":22265.4},{"a":2015,"v":15366.4},{"a":2016,"v":46023.9},{"a":2017,"v":37700.1},{"a":2018,"v":32644.7},{"a":2019,"v":32910.8},{"a":2020,"v":41688.0},{"a":2021,"v":36600.6},{"a":2022,"v":30126.5},{"a":2023,"v":43764.9},{"a":2024,"v":40365.3}],"9a":[{"a":2000,"v":1920},{"a":2001,"v":2336},{"a":2002,"v":2152},{"a":2003,"v":1316},{"a":2004,"v":542},{"a":2005,"v":1479},{"a":2006,"v":1922},{"a":2007,"v":1692},{"a":2008,"v":1655},{"a":2009,"v":1252},{"a":2010,"v":798},{"a":2011,"v":1830},{"a":2012,"v":411},{"a":2013,"v":510},{"a":2014,"v":682},{"a":2015,"v":1477},{"a":2016,"v":1517},{"a":2017,"v":892},{"a":2018,"v":1120},{"a":2019,"v":1177},{"a":2020,"v":1077},{"a":2021,"v":817},{"a":2022,"v":1912},{"a":2023,"v":3060},{"a":2024,"v":3170},{"a":2025,"v":1079}],"aire_hn":[{"a":2021,"v":11.8},{"a":2022,"v":10.2},{"a":2023,"v":15.1},{"a":2024,"v":15.2}],"aire_gt":[{"a":2021,"v":19.5},{"a":2022,"v":18.6},{"a":2023,"v":18.7},{"a":2024,"v":18.8}],"aire_sv":[{"a":2021,"v":12},{"a":2022,"v":13.4},{"a":2023,"v":19.2},{"a":2024,"v":17.3}],"aire_ni":[{"a":2021,"v":10.2},{"a":2022,"v":9.7},{"a":2023,"v":16.8},{"a":2024,"v":17.6}],"aire_cr":[{"a":2021,"v":7.8},{"a":2022,"v":7.9},{"a":2023,"v":6.1},{"a":2024,"v":7.0}],"9b":[{"a":2000,"v":54912},{"a":2001,"v":82227},{"a":2002,"v":63484},{"a":2003,"v":56720},{"a":2004,"v":8401},{"a":2005,"v":156182},{"a":2006,"v":60022},{"a":2007,"v":63989},{"a":2008,"v":65467},{"a":2009,"v":62005},{"a":2010,"v":37047},{"a":2011,"v":90586},{"a":2012,"v":58240},{"a":2013,"v":24462},{"a":2014,"v":81506},{"a":2015,"v":53320},{"a":2016,"v":56972},{"a":2017,"v":36000},{"a":2018,"v":60683},{"a":2019,"v":72435},{"a":2020,"v":81862},{"a":2021,"v":90547},{"a":2022,"v":196770},{"a":2023,"v":223501},{"a":2024,"v":296789},{"a":2025,"v":48626}],"10":[{"a":2021,"v":11.8},{"a":2022,"v":10.2},{"a":2023,"v":15.1},{"a":2024,"v":15.2}],"11":[{"a":2015,"v":136},{"a":2016,"v":136},{"a":2017,"v":114},{"a":2018,"v":61},{"a":2019,"v":350},{"a":2020,"v":24},{"a":2021,"v":357},{"a":2022,"v":159},{"a":2023,"v":663},{"a":2024,"v":477},{"a":2025,"v":637}],"12":[{"a":2019,"v":822920},{"a":2020,"v":959252},{"a":2021,"v":369098},{"a":2022,"v":425952},{"a":2023,"v":248092},{"a":2024,"v":350702},{"a":2025,"v":220368}],"13":[{"a":2022,"v":115},{"a":2023,"v":116},{"a":2024,"v":136},{"a":2025,"v":105}],"14":[{"a":2022,"v":63},{"a":2023,"v":34},{"a":2024,"v":60},{"a":2025,"v":31}],"15":[{"a":2022,"v":3},{"a":2023,"v":8},{"a":2024,"v":1},{"a":2025,"v":1}]};
 
 const ORDER=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
@@ -959,5 +961,512 @@ function downloadAllXLSX(){
   XLSX.writeFile(wb, fname);
   if(typeof showToast==='function') showToast('Excel descargado','success');
 }
-</script></body>
+</script><script>/*RESUMEN_JS*/
+/* ============================================================
+   resumen.js — Generador de resumen automático
+   Estado del País Honduras 2026 · ASJ
+
+   Uso:
+     RESUMEN.generar({
+       ind      : INDS[cid],        // objeto del indicador
+       cid      : cid,              // su clave
+       DATA     : DATA,             // series
+       MAP      : MAP_DATA_H,       // opcional, mapa departamental
+       mapKey   : 'hom',            // opcional, clave dentro de MAP
+       t        : t                 // opcional, función de traducción
+     })  ->  { titulo, parrafos:[...], texto }
+
+   No depende de Chart.js ni del DOM. Funciona igual en navegador y en Node.
+   ============================================================ */
+(function (root) {
+  'use strict';
+
+  /* ---------- utilidades numéricas ---------- */
+
+  function esNum(x) { return typeof x === 'number' && isFinite(x); }
+
+  // Decimales adaptativos: los índices 0-1 necesitan más precisión que los conteos.
+  function nf(v, den) {
+    if (!esNum(v)) return '—';
+    var abs = Math.abs(v), dec;
+    if (abs >= 1000) dec = 0;
+    else if (abs >= 100) dec = 0;
+    else if (abs >= 10) dec = 1;
+    else if (abs >= 1) dec = 2;
+    else dec = 3;
+    var s = v.toFixed(dec);
+    // quita ceros finales innecesarios (23.30 -> 23.3)
+    if (s.indexOf('.') > -1) s = s.replace(/0+$/, '').replace(/\.$/, '');
+    var p = s.split('.');
+    p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return p.join('.');
+  }
+
+  // "Por 100,000 hab." + "." produce doble punto: se limpia el sufijo.
+  function limpiaDen(den) {
+    return String(den || '').trim().replace(/\.+$/, '');
+  }
+
+  // "81.6 Porcentaje (%)" se lee mal dentro de un paréntesis: se acorta a "81.6%".
+  function unidadCorta(den) {
+    var d = limpiaDen(den);
+    if (/^porcentaje/i.test(d) || d === '%' || /\(%\)$/.test(d)) return '%';
+    return d ? ' ' + d : '';
+  }
+
+  function pct(a, b) {
+    if (!esNum(a) || !esNum(b) || a === 0) return null;
+    return (b - a) / Math.abs(a) * 100;
+  }
+
+  /* ---------- extracción de series ---------- */
+
+  // Devuelve las claves de DATA que corresponden al indicador.
+  function clavesDe(ind, cid, DATA) {
+    if (ind && ind.keys && ind.keys.length) {
+      return ind.keys.filter(function (k) { return DATA[k]; });
+    }
+    if (DATA[cid]) return [cid];
+    if (ind && ind.grp && DATA[ind.grp]) return [ind.grp];
+    return [];
+  }
+
+  // Serie temporal limpia: años numéricos, sin nulos, ordenada, deduplicada
+  // (se queda con la última ocurrencia de cada año) y sin los años parciales.
+  function serieTemporal(arr, parciales) {
+    var mapa = {};
+    (arr || []).forEach(function (p) {
+      if (!p || !esNum(p.v) || !esNum(Number(p.a))) return;
+      var a = Number(p.a);
+      if (parciales && parciales.indexOf(a) > -1) return;
+      mapa[a] = p.v;
+    });
+    return Object.keys(mapa)
+      .map(function (a) { return { a: Number(a), v: mapa[a] }; })
+      .sort(function (x, y) { return x.a - y.a; });
+  }
+
+  // Serie categórica: eje X de texto (departamentos, países, causas...).
+  function serieCategorica(arr) {
+    return (arr || [])
+      .filter(function (p) { return p && esNum(p.v) && !esNum(Number(p.a)); })
+      .map(function (p) { return { a: String(p.a), v: p.v }; });
+  }
+
+  function estadisticas(serie) {
+    if (!serie.length) return null;
+    var pri = serie[0], ult = serie[serie.length - 1];
+    var max = serie[0], min = serie[0];
+    serie.forEach(function (p) {
+      if (p.v > max.v) max = p;
+      if (p.v < min.v) min = p;
+    });
+    return { primero: pri, ultimo: ult, max: max, min: min, n: serie.length,
+             delta: pct(pri.v, ult.v) };
+  }
+
+  /* ---------- textos ---------- */
+
+  var PAISES = ['honduras', 'costa rica', 'guatemala', 'el salvador', 'nicaragua', 'panamá', 'panama'];
+
+  var UMBRAL_ESTABLE = 1.5; // % por debajo del cual se considera "sin cambios"
+
+  // Devuelve el juicio (mejoró/empeoró) y la dirección (subió/bajó) por separado,
+  // porque decir solo "mejoró un 24%" oculta si el número subió o bajó.
+  function verboTendencia(delta, sentido) {
+    if (delta === null) return null;
+    var sube = delta > 0;
+    var dir = sube ? 'aumentó' : 'se redujo';
+    if (Math.abs(delta) < UMBRAL_ESTABLE) return { juicio: 'estable', dir: dir };
+    if (sentido === 'mayor_mejor') return { juicio: sube ? 'mejoró' : 'empeoró', dir: dir };
+    if (sentido === 'menor_mejor') return { juicio: sube ? 'empeoró' : 'mejoró', dir: dir };
+    return { juicio: null, dir: dir };
+  }
+
+  /* ---------- reconocimiento de categorías ---------- */
+
+  function norm(s) {
+    return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .toUpperCase().replace(/\s+/g, ' ').trim();
+  }
+
+  var DEPTOS = ['ATLANTIDA', 'CHOLUTECA', 'COLON', 'COMAYAGUA', 'COPAN', 'CORTES',
+    'EL PARAISO', 'FRANCISCO MORAZAN', 'GRACIAS A DIOS', 'INTIBUCA', 'ISLAS DE LA BAHIA',
+    'LA PAZ', 'LEMPIRA', 'OCOTEPEQUE', 'OLANCHO', 'SANTA BARBARA', 'VALLE', 'YORO'];
+
+  function esDepartamental(cats) {
+    if (cats.length < 10) return false;
+    var hit = cats.filter(function (c) { return DEPTOS.indexOf(norm(c.a)) > -1; }).length;
+    return hit >= cats.length * 0.8;
+  }
+
+  function esPaises(cats) {
+    if (cats.length < 3) return false;
+    var hit = cats.filter(function (c) {
+      return PAISES.indexOf(String(c.a).toLowerCase().trim()) > -1;
+    }).length;
+    return hit >= 3;
+  }
+
+  // Sumar rankings, tasas o puntajes no significa nada: solo los conteos son aditivos.
+  function esAditivo(ind) {
+    var d = String(ind.den || '').toLowerCase();
+    return !/ranking|puntaje|score|índice|indice|tasa|por cada|por 100|porcentaje|%|promedio|prom\.|por usuario|por hora/.test(d);
+  }
+
+  /* ---------- bloque departamental ---------- */
+
+  function bloqueMapa(MAP, mapKey, ind, paresDirectos, anioMapa) {
+    var pares = paresDirectos;
+    if (!pares) {
+      if (!MAP || !mapKey || !MAP[mapKey]) return null;
+      var obj = MAP[mapKey];
+      pares = Object.keys(obj)
+        .filter(function (d) { return esNum(obj[d]); })
+        .map(function (d) { return { d: d, v: obj[d] }; });
+    }
+    pares = pares.slice().sort(function (a, b) { return b.v - a.v; });
+    if (pares.length < 3) return null;
+
+    var alto = pares.slice(0, 3), bajo = pares.slice(-3).reverse();
+    var suma = pares.reduce(function (s, p) { return s + p.v; }, 0);
+    var prom = suma / pares.length;
+    var sobre = pares.filter(function (p) { return p.v > prom; }).length;
+    // el mínimo real es el último de la lista ordenada, no el último del top-3 bajo
+    var minReal = pares[pares.length - 1];
+    var razon = (minReal.v > 0) ? pares[0].v / minReal.v : null;
+
+    var den = limpiaDen(ind.den);
+    var menorMejor = ind.sentido === 'menor_mejor';
+
+    var etiquetaAnio = anioMapa ? ' (' + anioMapa + ')' : '';
+    var f1 = 'Por departamento' + etiquetaAnio + ', los valores más altos se registran en ' +
+      alto.map(function (p) { return p.d + ' (' + nf(p.v) + ')'; }).join(', ') +
+      '; los más bajos en ' +
+      bajo.map(function (p) { return p.d + ' (' + nf(p.v) + ')'; }).join(', ') + '.';
+    if (menorMejor) f1 += ' En este indicador un valor más bajo es mejor, ' +
+      'por lo que la situación más crítica está en ' + alto[0].d + '.';
+
+    var f2 = '';
+    if (razon && razon >= 1.2) {
+      f2 = 'La brecha entre el departamento con mayor y menor valor es de ' +
+        nf(razon) + ' veces';
+      f2 += ', y ' + sobre + ' de ' + pares.length +
+        ' departamentos están por encima del promedio nacional (' + nf(prom) + ' ' + den + ').';
+    } else {
+      f2 = sobre + ' de ' + pares.length + ' departamentos están por encima del promedio nacional (' +
+        nf(prom) + ' ' + den + ').';
+    }
+    return [f1, f2];
+  }
+
+  /* ---------- comparativo regional ---------- */
+
+  function esComparativoPais(ind) {
+    if (!ind.multi || !ind.series) return false;
+    var hn = ind.series.some(function (s) { return String(s).toLowerCase().indexOf('honduras') > -1; });
+    var otros = ind.series.filter(function (s) {
+      return PAISES.indexOf(String(s).toLowerCase()) > -1;
+    }).length;
+    return hn && otros >= 2;
+  }
+
+  function bloqueRegional(ind, DATA) {
+    var claves = ind.keys || [];
+    var ultimos = [];
+    claves.forEach(function (k, i) {
+      var s = serieTemporal(DATA[k], ind.parcial);
+      if (s.length) ultimos.push({ nombre: ind.series[i], v: s[s.length - 1].v, a: s[s.length - 1].a });
+    });
+    if (ultimos.length < 3) return null;
+    var mayorMejor = ind.sentido === 'mayor_mejor';
+    ultimos.sort(function (a, b) { return mayorMejor ? b.v - a.v : a.v - b.v; });
+    var pos = ultimos.findIndex(function (u) {
+      return String(u.nombre).toLowerCase().indexOf('honduras') > -1;
+    });
+    if (pos < 0) return null;
+    var anio = ultimos[0].a;
+    var txt = 'En el comparativo regional (' + anio + '), Honduras ocupa la posición ' +
+      (pos + 1) + ' de ' + ultimos.length + ': ' +
+      ultimos.map(function (u) { return u.nombre + ' ' + nf(u.v); }).join(', ') + '.';
+    return txt;
+  }
+
+  /* ---------- generador principal ---------- */
+
+  function generar(cfg) {
+    var ind = cfg.ind, cid = cfg.cid, DATA = cfg.DATA || {};
+    if (!ind) return null;
+    var t = cfg.t || function (s) { return s; };
+    var den = ind.den || '';
+    var parciales = ind.parcial || null;
+    var claves = clavesDe(ind, cid, DATA);
+    var parrafos = [];
+
+    if (!claves.length) return null;
+
+    var crudo = DATA[claves[0]] || [];
+    var yaDepartamental = false;
+    var cat = serieCategorica(crudo);
+    var temporal = serieTemporal(crudo, parciales);
+
+    /* --- caso 0: indicador con varias series --- */
+    // Con dos o más series, resumir solo la primera daría un dato incompleto
+    // aunque el título nombre las dos (p. ej. "Pobreza total y pobreza extrema").
+    if (ind.multi && ind.series && claves.length > 1) {
+      var ss = [];
+      claves.forEach(function (k, i) {
+        var s = serieTemporal(DATA[k], parciales);
+        if (!s.length) return;
+        var todosCero = s.every(function (p) { return p.v === 0; });
+        if (todosCero) return; // serie sin datos reales cargados
+        ss.push({ nombre: (ind.series[i] || k), st: estadisticas(s) });
+      });
+      if (ss.length > 1) {
+        var anio = ss[0].st.ultimo.a;
+        parrafos.push('En ' + anio + ', ' + ss.map(function (x) {
+          return x.nombre + ': ' + nf(x.st.ultimo.v);
+        }).join('; ') + ' (' + limpiaDen(den) + ').');
+
+        // Si al excluir el año en curso queda un solo año, no hay tendencia que reportar.
+        var conHistoria = ss.filter(function (x) { return x.st.n > 1; });
+        if (!conHistoria.length) {
+          parrafos.push('La serie cuenta con un solo año completo (' + ss[0].st.ultimo.a +
+            '), por lo que todavía no es posible calcular una tendencia.');
+        }
+
+        var desdes = ss.map(function (x) {
+          var vv = verboTendencia(x.st.delta, ind.sentido);
+          if (!vv) return x.nombre + ' no admite variación porcentual';
+          if (vv.juicio === 'estable') return x.nombre + ' se mantuvo estable';
+          return x.nombre + ' ' + vv.dir + ' un ' + nf(Math.abs(x.st.delta)) + '%';
+        });
+        if (conHistoria.length) {
+          parrafos.push('Desde ' + ss[0].st.primero.a + ', ' +
+            desdes.slice(0, -1).join(', ') + ' y ' + desdes[desdes.length - 1] + '.');
+        }
+
+        if (ind.sentido === 'neutro' && conHistoria.length) {
+          parrafos.push('Las series de este indicador no apuntan en la misma dirección ' +
+            'valorativa, por lo que el resumen no las califica como mejora o retroceso.');
+        }
+
+        if (esComparativoPais(ind)) {
+          var regM = bloqueRegional(ind, DATA);
+          if (regM) parrafos.push(regM);
+        }
+
+        var mapaM = bloqueMapa(cfg.MAP, cfg.mapKey, ind, null, cfg.mapAnio);
+        if (mapaM) parrafos = parrafos.concat(mapaM);
+        if (parciales && parciales.length) {
+          parrafos.push('Nota: el dato de ' + parciales.join(', ') +
+            ' corresponde a un año en curso y se excluyó del cálculo de tendencia.');
+        }
+        if (ind.nota) parrafos.push('Nota: ' + ind.nota);
+        var rangoM = ' (' + ss[0].st.primero.a + '–' + ss[0].st.ultimo.a + ')';
+        return {
+          titulo: t(ind.n) + rangoM,
+          parrafos: parrafos,
+          fuente: ind.src ? 'Fuente: ' + ind.src : '',
+          texto: t(ind.n) + rangoM + '\n\n' + parrafos.join(' ') +
+                 (ind.src ? '\n\nFuente: ' + ind.src : '')
+        };
+      }
+    }
+
+    /* --- caso A: indicador categórico (sin eje temporal) --- */
+    if (cat.length && !temporal.length) {
+      if (esDepartamental(cat)) {
+        yaDepartamental = true;
+        // Si hay mapa cargado se usa ese, porque refleja el año que el usuario
+        // tiene seleccionado; la serie de DATA es de un año fijo.
+        var usarMapa = cfg.MAP && cfg.mapKey && cfg.MAP[cfg.mapKey];
+        var bm = usarMapa
+          ? bloqueMapa(cfg.MAP, cfg.mapKey, ind, null, cfg.mapAnio)
+          : bloqueMapa(null, null, ind, cat.map(function (c) { return { d: c.a, v: c.v }; }), cfg.mapAnio);
+        if (bm) parrafos = parrafos.concat(bm);
+      } else if (esPaises(cat)) {
+        var mayorMejorC = ind.sentido === 'mayor_mejor';
+        var ordC = cat.slice().sort(function (a, b) {
+          return mayorMejorC ? b.v - a.v : a.v - b.v;
+        });
+        var posC = ordC.findIndex(function (c) {
+          return String(c.a).toLowerCase().indexOf('honduras') > -1;
+        });
+        var listaC = ordC.map(function (c) { return c.a + ' ' + nf(c.v); }).join(', ');
+        if (posC > -1) {
+          parrafos.push('Honduras ocupa la posición ' + (posC + 1) + ' de ' + ordC.length +
+            ' en el comparativo regional: ' + listaC + '.');
+        } else {
+          parrafos.push('Comparativo regional: ' + listaC + '.');
+        }
+      } else {
+        var orden = cat.slice().sort(function (a, b) { return b.v - a.v; });
+        var tres = orden.slice(0, 3);
+        parrafos.push('El indicador se desagrega en ' + cat.length + ' categorías. ' +
+          'La mayor es ' + tres[0].a + ' con ' + nf(tres[0].v) + ' ' + limpiaDen(ind.den) +
+          (tres[1] ? ', seguida de ' + tres[1].a + ' (' + nf(tres[1].v) + ')' : '') +
+          (tres[2] ? ' y ' + tres[2].a + ' (' + nf(tres[2].v) + ')' : '') + '.');
+        if (cat.length > 3 && esAditivo(ind)) {
+          var total = cat.reduce(function (s, p) { return s + p.v; }, 0);
+          if (total > 0) {
+            var partic = tres.reduce(function (s, p) { return s + p.v; }, 0) / total * 100;
+            parrafos.push('Las tres primeras concentran el ' + nf(partic) +
+              '% del total registrado (' + nf(total) + ' ' + limpiaDen(ind.den) + ').');
+          }
+        }
+      }
+    }
+
+    /* --- caso B: serie temporal --- */
+    if (temporal.length) {
+      var st = estadisticas(temporal);
+      var p1 = 'El último dato disponible es de ' + st.ultimo.a + ': ' +
+        nf(st.ultimo.v) + ' ' + limpiaDen(den) + '.';
+      parrafos.push(p1);
+
+      if (st.n === 1) {
+        parrafos.push('La serie registra un solo año, por lo que no es posible calcular una tendencia.');
+      }
+
+      if (st.n > 1) {
+        var v = verboTendencia(st.delta, ind.sentido);
+        // delta indefinido: el primer valor es cero y el porcentaje no tiene sentido.
+        if (!v) {
+          parrafos.push('El primer año de la serie (' + st.primero.a +
+            ') registra valor cero, por lo que no se calcula la variación porcentual. ' +
+            'La diferencia absoluta es de ' + nf(st.ultimo.v - st.primero.v) + ' ' + limpiaDen(den) + '.');
+        }
+        var base = 'Respecto a ' + st.primero.a + ' (' + nf(st.primero.v) + ') ';
+        var magnitud = nf(Math.abs(st.delta)) + '%';
+        var p2;
+        if (!v) { p2 = null; }
+        else if (v.juicio === 'estable') {
+          p2 = base + 'se mantuvo prácticamente sin cambios (' +
+            (st.delta > 0 ? '+' : '') + nf(st.delta) + '%).';
+        } else if (!v.juicio) {
+          p2 = base + v.dir + ' un ' + magnitud + '.';
+        } else {
+          p2 = base + 'el indicador ' + v.juicio + ': ' + v.dir + ' un ' + magnitud + '.';
+        }
+        if (p2) parrafos.push(p2);
+
+        // extremos: solo si aportan algo que no esté ya dicho
+        var extremosUtiles = (st.max.a !== st.ultimo.a || st.min.a !== st.primero.a) &&
+                             (st.max.a !== st.primero.a || st.min.a !== st.ultimo.a);
+        if (extremosUtiles && st.n >= 4) {
+          parrafos.push('El valor más alto de la serie se registró en ' + st.max.a +
+            ' (' + nf(st.max.v) + ') y el más bajo en ' + st.min.a + ' (' + nf(st.min.v) + ').');
+        }
+      }
+
+      if (esComparativoPais(ind)) {
+        var reg = bloqueRegional(ind, DATA);
+        if (reg) parrafos.push(reg);
+      }
+    }
+
+    /* --- bloque departamental --- */
+    // Si el propio indicador ya es departamental (caso A), no se repite el mapa.
+    var mapa = yaDepartamental ? null : bloqueMapa(cfg.MAP, cfg.mapKey, ind, null, cfg.mapAnio);
+    if (mapa) parrafos = parrafos.concat(mapa);
+
+    /* --- advertencias --- */
+    if (parciales && parciales.length) {
+      parrafos.push('Nota: el dato de ' + parciales.join(', ') +
+        ' corresponde a un año en curso y no es comparable con años completos, ' +
+        'por lo que se excluyó del cálculo de tendencia.');
+    }
+    if (ind.nota) parrafos.push('Nota: ' + ind.nota);
+
+    /* --- título y fuente --- */
+    var rango = temporal.length > 1
+      ? ' (' + temporal[0].a + '–' + temporal[temporal.length - 1].a + ')' : '';
+    var titulo = t(ind.n) + rango;
+    var fuente = ind.src ? 'Fuente: ' + ind.src : '';
+
+    return {
+      titulo: titulo,
+      parrafos: parrafos,
+      fuente: fuente,
+      texto: titulo + '\n\n' + parrafos.join(' ') + (fuente ? '\n\n' + fuente : '')
+    };
+  }
+
+  var API = { generar: generar, _nf: nf, _serieTemporal: serieTemporal };
+  if (typeof module !== 'undefined' && module.exports) module.exports = API;
+  root.RESUMEN = API;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+
+<!--RESUMEN_MODAL-->
+<div id="resumenModal" style="display:none;position:fixed;inset:0;z-index:100001;align-items:center;justify-content:center">
+  <div onclick="closeResumen()" style="position:absolute;inset:0;background:rgba(6,16,34,.68)"></div>
+  <div style="position:relative;max-width:620px;width:calc(100% - 48px);max-height:82vh;overflow:auto;background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4);padding:26px 28px">
+    <button onclick="closeResumen()" aria-label="Cerrar" style="position:absolute;top:14px;right:14px;width:30px;height:30px;border:none;background:#eef2f7;border-radius:50%;font-size:18px;line-height:1;color:#334155;cursor:pointer;font-family:inherit">&times;</button>
+    <div style="font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#2e7d32;margin-bottom:6px" data-i18n="Resumen del indicador">Resumen del indicador</div>
+    <div id="resumenTitulo" style="font-size:17px;font-weight:700;color:#0d2a4e;line-height:1.35;margin-bottom:14px"></div>
+    <div id="resumenTexto" style="font-size:14px;color:#2b3a4a;line-height:1.75"></div>
+    <div id="resumenFuente" style="font-size:11px;color:#7a8699;line-height:1.55;margin-top:16px;padding-top:12px;border-top:1px solid #e6ebf2"></div>
+    <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">
+      <button onclick="copiarResumen()" style="display:inline-flex;align-items:center;gap:6px;background:#2e7d32;border:none;color:#fff;font-size:12px;font-weight:700;padding:9px 16px;border-radius:8px;cursor:pointer;font-family:inherit"><span data-i18n="Copiar">Copiar</span></button>
+      <button onclick="dlResumenPDF()" style="display:inline-flex;align-items:center;gap:6px;background:#eef2f7;border:none;color:#334155;font-size:12px;font-weight:700;padding:9px 16px;border-radius:8px;cursor:pointer;font-family:inherit"><span data-i18n="Descargar PDF">Descargar PDF</span></button>
+    </div>
+    <div style="font-size:10.5px;color:#8fa8c0;margin-top:14px;font-style:italic" data-i18n="Resumen generado automáticamente a partir de los datos del indicador.">Resumen generado automáticamente a partir de los datos del indicador.</div>
+  </div>
+</div>
+<script>
+function _resumenActual(){
+  var cid = (typeof cids!=='undefined' && cids.length) ? cids[0] : (typeof currentId!=='undefined'? currentId : null);
+  if(cid===null||cid===undefined||!INDS[cid]) return null;
+  var ind = INDS[cid], mapKey = null;
+  if(typeof MAP_DATA_H!=='undefined' && ind.mapId){
+    if(MAP_DATA_H[ind.mapId]) mapKey = ind.mapId;
+    else { // mapas con clave compuesta (p. ej. cobertura_2024)
+      var y = (typeof currentMapYear!=='undefined') ? currentMapYear : null;
+      if(y && MAP_DATA_H[ind.mapId+'_'+y]) mapKey = ind.mapId+'_'+y;
+      else mapKey = Object.keys(MAP_DATA_H).filter(function(k){return k.indexOf(ind.mapId)===0;})[0]||null;
+    }
+  }
+  var mapAnio=(typeof currentMapYear!=='undefined')?currentMapYear:null;
+  return RESUMEN.generar({ind:ind,cid:cid,DATA:DATA,MAP:(typeof MAP_DATA_H!=='undefined'?MAP_DATA_H:null),mapKey:mapKey,mapAnio:mapAnio,t:(typeof t==='function'?t:null)});
+}
+function openResumen(){
+  var r=_resumenActual();
+  if(!r){ if(typeof showToast==='function') showToast('No hay datos suficientes para generar un resumen','error'); return; }
+  document.getElementById('resumenTitulo').textContent=r.titulo;
+  document.getElementById('resumenTexto').textContent=r.parrafos.join(' ');
+  document.getElementById('resumenFuente').textContent=r.fuente||'';
+  window._resumenTexto=r.texto;
+  document.getElementById('resumenModal').style.display='flex';
+}
+function closeResumen(){var m=document.getElementById('resumenModal');if(m)m.style.display='none';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeResumen();});
+function copiarResumen(){
+  var txt=window._resumenTexto||'';
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){ if(typeof showToast==='function') showToast('Resumen copiado'); });
+  } else {
+    var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy'); if(typeof showToast==='function') showToast('Resumen copiado');}catch(e){}
+    document.body.removeChild(ta);
+  }
+}
+function dlResumenPDF(){
+  var r=_resumenActual(); if(!r) return;
+  var J=(window.jspdf&&window.jspdf.jsPDF)||window.jsPDF;
+  if(!J){ if(typeof showToast==='function') showToast('No se pudo generar el PDF','error'); return; }
+  var doc=new J({unit:'pt',format:'letter'}), M=56, W=doc.internal.pageSize.getWidth()-M*2, y=M;
+  doc.setFont('helvetica','bold');doc.setFontSize(15);doc.setTextColor(13,42,78);
+  doc.text(doc.splitTextToSize(r.titulo,W),M,y); y+=doc.splitTextToSize(r.titulo,W).length*19+14;
+  doc.setFont('helvetica','normal');doc.setFontSize(11);doc.setTextColor(43,58,74);
+  var cuerpo=doc.splitTextToSize(r.parrafos.join(' '),W);
+  cuerpo.forEach(function(l){ if(y>740){doc.addPage();y=M;} doc.text(l,M,y); y+=16; });
+  if(r.fuente){ y+=10; doc.setFontSize(8.5);doc.setTextColor(122,134,153);
+    doc.splitTextToSize(r.fuente,W).forEach(function(l){ if(y>760){doc.addPage();y=M;} doc.text(l,M,y); y+=11; }); }
+  doc.save('resumen_'+String(r.titulo).replace(/[^a-z0-9]+/gi,'_').slice(0,50)+'.pdf');
+}
+</script>
+</body>
 </html>
